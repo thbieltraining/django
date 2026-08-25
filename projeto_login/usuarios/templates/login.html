@@ -2,23 +2,99 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login | Django com Nathan</title>
+    <title>Univesp FPCOM - Login</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f9; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; }
-        h2 { margin-top: 0; text-align: center; color: #333; }
-        input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background-color: #175500; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background-color: #04fe47; }
+        /* 1. Fundo geral da tela */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a; /* Cor do fundo escuro */
+            margin: 0;
+        }
+
+        /* 2. Cartão central de login */
+        .card {
+            background: #242424; /* Cor interna do cartão */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            width: 300px;
+            color: #ffffff;
+        }
+
+        /* 3. Título principal */
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        /* 4. Rótulos (Labels) dos campos */
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        /* 5. Caixas de entrada (Inputs) */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #333333;
+            border: 1px solid #444444;
+            border-radius: 4px;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        /* Destaque quando clica na caixa de texto */
+        input:focus {
+            border-color: #1e6b1e;
+            outline: none;
+        }
+
+        /* 6. Botão de Login */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e6b1e; /* Verde do botão */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #268726; /* Verde mais claro ao passar o mouse */
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Univesp FPCOM   </h2>
+        <h2>Univesp FPCOM</h2>
+        
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
+            
+            <!-- Rótulo e Campo de Usuário em Português -->
+            <label for="{{ form.username.id_for_label }}">Nome de Usuário:</label>
+            {{ form.username }}
+            
+            <!-- Rótulo e Campo de Senha em Português -->
+            <label for="{{ form.password.id_for_label }}">Senha:</label>
+            {{ form.password }}
+            
+            <button type="submit">Entrar</button>
         </form>
     </div>
 </body>
